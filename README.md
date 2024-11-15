@@ -45,6 +45,16 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
+## ENVIRONMENTAL VARIABLES AND KEYS
+
+# CLOUD_NAME=e-commerce-website
+
+# CLOUD_API_KEY=742572971787234
+
+# CLOUDINARY_API_SECRET=4ytWgJj4DLzBDJNh2_J1kL2mpUU
+
+# DATABASE_URL=postgres://default:FSjm5GQWNxg2@ep-autumn-scene-a43xswr6.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require
+
 ## Run tests
 
 ```bash
