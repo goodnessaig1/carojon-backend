@@ -1,0 +1,137 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: ID!
+  email: String!
+  password: String!
+  fullname: String!
+  userType: String!
+  business: Business
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Business {
+  id: ID!
+  name: String!
+  description: String!
+}
+
+type UserWithBusiness {
+  id: ID!
+  email: String!
+  fullname: String!
+  userType: String!
+  createdAt: String!
+  updatedAt: String!
+  business: Business
+}
+
+type UserResponse {
+  status: String!
+  statusCode: Float!
+  user: User!
+}
+
+type Order {
+  id: ID!
+  userId: Int!
+  giftCardId: Int!
+  giftCard: GiftCard
+}
+
+type GiftCard {
+  id: ID!
+  title: String!
+  isActive: Boolean!
+  amount: Float!
+  image: String!
+  businessId: Int!
+}
+
+type Payment {
+  id: ID!
+  giftCardId: Int!
+  userId: Int!
+}
+
+type Service {
+  id: ID!
+  name: String!
+  price: Float!
+  businessId: Int!
+  description: String!
+}
+
+type ServiceType {
+  id: ID!
+  name: String!
+  price: Float!
+  businessId: String!
+  description: String!
+}
+
+type GiftCardType {
+  id: ID!
+  title: String!
+  amount: Float!
+  businessId: String!
+  image: String
+  isActive: Boolean!
+}
+
+type Query {
+  getUsers: [User!]!
+  users: [User!]!
+  getBusinessManagers: [User!]!
+  userWithBusiness(userId: Int!): User
+  getGiftCardsByBusinessId(businessId: Int!): [GiftCard!]!
+  getServicesByBusinessId(businessId: Int!): [Service!]!
+  getPaymentsByUserId(userId: Int!): [Payment!]!
+  getOrdersByUser(userId: Int!): [Order!]!
+}
+
+type Mutation {
+  createUser(createUserInput: CreateUserInput!): UserWithBusiness!
+  loginUser(loginUserInput: LoginUserInput!): UserResponse!
+  createGiftCard(createGiftCardInput: CreateGiftCardInput!): GiftCardType!
+  deactivateGiftCard(id: Int!): GiftCard!
+  createService(createServiceInput: CreateServiceInput!): ServiceType!
+  createPayment(createPaymentInput: CreatePaymentInput!): Payment!
+}
+
+input CreateUserInput {
+  email: String!
+  password: String!
+  fullname: String!
+  userType: String!
+  businessName: String
+  businessDescription: String
+}
+
+input LoginUserInput {
+  email: String!
+  password: String!
+}
+
+input CreateGiftCardInput {
+  title: String!
+  amount: Float!
+  businessId: String!
+  isActive: Boolean! = true
+  image: String!
+}
+
+input CreateServiceInput {
+  name: String!
+  description: String!
+  price: Float!
+  businessId: String!
+}
+
+input CreatePaymentInput {
+  userId: Float!
+  giftCardId: Float!
+}
